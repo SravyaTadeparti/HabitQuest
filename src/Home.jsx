@@ -3,23 +3,57 @@ import logo from "./assets/logo.png";
 import character from "./assets/welcome_char.png";
 import menuBox from "./assets/menu-box2.png"; 
 import speechBubble from "./assets/speech-bubble.png"
-import coin from "./assets/token.png";
+import tokenIcon from "./assets/token.png";
 import { Link } from "react-router-dom"; 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { db, auth } from "./firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 
 
 function Home() {
+
+    const [tokens, setTokens] = useState(0);
+
+    // 🔹 Fetch tokens when the page loads
+    useEffect(() => {
+        const fetchTokens = async () => {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            const userDocRef = doc(db, "users", user.uid);
+            const userDoc = await getDoc(userDocRef);
+
+            if (userDoc.exists()) {
+                setTokens(userDoc.data().tokens || 0); // ✅ Load tokens
+            }
+        };
+
+        fetchTokens();
+    }, []);
   return (
     <div className="home-container">
-      <header className="top-bar">
-        <img src={logo} alt="HabitQuest Logo" />
-        <h1>HabitQuest</h1>
-        <img src={coin} alt="Coin image" />
-      </header>
+    <header className="top-bar">
+        <div className="logo-title">
+            <img src={logo} alt="HabitQuest Logo" />
+            <h1>HabitQuest</h1>
+        </div>
+        <div className="token-display">
+            <img src={tokenIcon} alt="Token" className="token-icon" />
+            <span className="token-count">{tokens}</span>
+        </div>
+    </header>
+
 
       <div className="main-content">
         <div className="menu-container">
+            <Link to="/dailyupdate" className="menu-link">
+                <div className="menu-box">
+                    <img src={menuBox} alt="Menu Box" />
+                    <p>Habits</p>
+                </div>
+            </Link>
             <Link to="/profile" className="menu-link">
                 <div className="menu-box">
                     <img src={menuBox} alt="Menu Box" />
@@ -44,6 +78,7 @@ function Home() {
                     <p>Pets</p>
                 </div>
             </Link>
+
         </div>
 
         <div className="character-container">

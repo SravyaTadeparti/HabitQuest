@@ -1,0 +1,117 @@
+/* Habits Page */
+.habits-container {
+    /* text-align: center; */
+    padding: 20px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    min-height: 100vh;
+    background-image: url(./assets/background3.jpg);
+    background-size: cover;
+  }
+  
+  /* New Habit Button */
+  .new-habit-button {
+    position:absolute;
+    top:0;
+    left:0;
+    padding: 35px 50px;
+    font-size: 2vw;
+    background-image: url(./assets/new_habit_button.png);
+    background-size: cover;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    transition: ease-in-out 0.2s;
+  }
+  
+  .new-habit-button:hover{
+    transform: scale(1.1);
+  }
+  
+  /* Habit Card */
+  .habit-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .habit-paper {
+    width: 35vw;
+  }
+  .habit-content p {
+    margin: 20px 0; /* Adds space above and below each text */
+  }
+  
+  
+  /* Habit Content */
+  .habit-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+  }
+  
+  .habit-content input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  /* Remove black box when typing */
+  .editable {
+    outline: none; /* Removes focus outline */
+    border: none;  /* Ensures no borders */
+    background: none; /* Removes any background highlight */
+  }
+  
+  
+  .habit-content button:not(.delete-button) {
+    padding: 5px 10px;
+    background-color: #8b4513;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .habit-content button:not(.delete-button):hover {
+    background-color: #a0522d;
+  }
+  
+  /* Habit List */
+  .habit-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 100vh;
+    scrollbar-width: 10px;
+    scrollbar-width: none;
+  }
+
+  .delete-button {
+    position: absolute;
+    bottom:-50px;
+    right:-20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background-color: none;
+    border:none;
+  }
+  
+  .delete-button img {
+    width: 2vw;
+    display: block;
+  }
+  
