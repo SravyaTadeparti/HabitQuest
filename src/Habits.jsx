@@ -4,6 +4,12 @@ import medievalPaper from "./assets/medieval_paper.png";
 import trashIcon from "./assets/trash.png";
 import { db, auth } from "./firebase";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import TopBar from "./TopBar";
+import MenuBar from "./MenuBar";
+import button2 from "./assets/woodenbutton2.png";
+import { Link } from "react-router-dom";
+
+
 
 function Habits() {
   const [habits, setHabits] = useState([]);
@@ -39,26 +45,39 @@ function Habits() {
     await setDoc(userDocRef, { habits: updatedHabits }, { merge: true });
   };
 
-  // 🔹 Add a new habit
+  const getTokenAmount = (difficulty) => {
+    if (difficulty.toLowerCase() === "easy") {
+      return Math.floor(Math.random() * 11); // 0 - 10 tokens
+    } else if (difficulty.toLowerCase() === "medium") {
+      return Math.floor(Math.random() * 11) + 10; // 10 - 20 tokens
+    } else if (difficulty.toLowerCase() === "hard") {
+      return Math.floor(Math.random() * 11) + 20; // 20 - 30 tokens
+    } else {
+      return Math.floor(Math.random() * 10) + 1; // Default: 1 - 10 tokens
+    }
+  };
+  
   const addHabit = async () => {
     if (!newHabit.trim() || !difficulty.trim()) return;
-
-    const randomTokens = Math.floor(Math.random() * 100) + 1;
+  
+    const tokenAmount = getTokenAmount(difficulty); // ✅ Get token amount based on difficulty
+  
     const newHabitObj = {
       id: Date.now(),
       name: newHabit,
       difficulty,
-      tokens: randomTokens,
+      tokens: tokenAmount, // ✅ Assign calculated tokens
     };
-
+  
     const updatedHabits = [...habits, newHabitObj];
     setHabits(updatedHabits);
     await saveHabitsToFirestore(updatedHabits); // ✅ Save to Firestore
-
+  
     setNewHabit("");
     setDifficulty("");
     setShowHabitForm(false);
   };
+
 
   // 🔹 Delete a habit
   const deleteHabit = async (habitId) => {
@@ -87,65 +106,75 @@ function Habits() {
   };
 
   return (
-    <div className="habits-container">
+    <div className="habits-page">
+      <TopBar />
+      <MenuBar />
 
-      <button className="new-habit-button" onClick={() => setShowHabitForm(true)}>
-        + New Habit
-      </button>
+      <div className="update-habits-button">
+        <Link to="/dailyupdate">
+            <img src={button2} alt="button" className="button-image" />
+            <div className="button-name">Update Habits</div>
+        </Link>
+      </div>
 
-      {/* Show habit paper when "New Habit" is clicked */}
-      {showHabitForm && (
-        <div className="habit-card">
-          <img src={medievalPaper} alt="Habit Paper" className="habit-paper" />
-          <div className="habit-content">
-            <p>
-              Habit:{" "}
-              <span
-                className="editable"
-                contentEditable="true"
-                onInput={(e) => setNewHabit(e.target.textContent)}
-                onKeyDown={(e) => handleKeyPress(e, difficultyRef)}
-              >
-                Click to type...
-              </span>
-            </p>
-            <p>
-              Difficulty:{" "}
-              <span
-                className="editable"
-                ref={difficultyRef}
-                contentEditable="true"
-                onInput={(e) => setDifficulty(e.target.textContent)}
-                onKeyDown={(e) => handleKeyPress(e, null)}
-              >
-                Click to type...
-              </span>
-            </p>
-            <button onClick={addHabit}>Confirm</button>
+      <div className="habits-container">
 
-            {/* Trash Can (Visible even before confirming) */}
-            <button className="delete-button" onClick={cancelNewHabit}>
-              <img src={trashIcon} alt="Delete" />
-            </button>
-          </div>
-        </div>
-      )}
 
-      {/* Show all habits */}
-      <div className="habit-list">
-        {habits.map((habit) => (
-          <div key={habit.id} className="habit-card">
+        <button className="new-habit-button" onClick={() => setShowHabitForm(true)}>+</button>
+
+        {showHabitForm && (
+          <div className="habit-card">
             <img src={medievalPaper} alt="Habit Paper" className="habit-paper" />
             <div className="habit-content">
-              <p>Habit: {habit.name}</p>
-              <p>Difficulty: {habit.difficulty}</p>
-              <p>Tokens: {habit.tokens}</p>
-              <button className="delete-button" onClick={() => deleteHabit(habit.id)}>
+              <p>
+                Habit:{" "}
+                <span
+                  className="editable"
+                  contentEditable="true"
+                  onInput={(e) => setNewHabit(e.target.textContent)}
+                  onKeyDown={(e) => handleKeyPress(e, difficultyRef)}
+                >
+                  Click to type...
+                </span>
+              </p>
+              <p>
+                Difficulty:{" "}
+                <span
+                  className="editable"
+                  ref={difficultyRef}
+                  contentEditable="true"
+                  onInput={(e) => setDifficulty(e.target.textContent)}
+                  onKeyDown={(e) => handleKeyPress(e, null)}
+                >
+                  Click to type...
+                </span>
+              </p>
+              <button onClick={addHabit}>Confirm</button>
+
+              {/* Trash Can (Visible even before confirming) */}
+              <button className="delete-button" onClick={cancelNewHabit}>
                 <img src={trashIcon} alt="Delete" />
               </button>
             </div>
           </div>
-        ))}
+        )}
+
+        {/* Show all habits */}
+        <div className="habit-list">
+          {habits.map((habit) => (
+            <div key={habit.id} className="habit-card">
+              <img src={medievalPaper} alt="Habit Paper" className="habit-paper" />
+              <div className="habit-content">
+                <p>Habit: {habit.name}</p>
+                <p>Difficulty: {habit.difficulty}</p>
+                <p>Tokens: {habit.tokens}</p>
+                <button className="delete-button" onClick={() => deleteHabit(habit.id)}>
+                  <img src={trashIcon} alt="Delete" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

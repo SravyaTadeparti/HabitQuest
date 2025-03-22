@@ -1,0 +1,27 @@
+.top-bar {
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    /* padding: 2vh 2vw; */
+    margin:100px 100px;
+
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.top-bar img {
+    height: 5vh;
+}
+
+.top-bar h1 {
+    font-size: 2vw;
+}
+  

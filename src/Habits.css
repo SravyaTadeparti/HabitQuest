@@ -1,4 +1,9 @@
 /* Habits Page */
+
+.habits-page{
+  background-image: url(./assets/background3.jpg);
+  background-size: cover;
+}
 .habits-container {
     /* text-align: center; */
     padding: 20px;
@@ -8,29 +13,31 @@
     justify-content: center;
     width:100%;
     min-height: 100vh;
-    background-image: url(./assets/background3.jpg);
-    background-size: cover;
+    
   }
   
   /* New Habit Button */
   .new-habit-button {
     position:absolute;
-    top:0;
-    left:0;
-    padding: 35px 50px;
+    bottom:50px;
+    right:400px;
+    width:50px;
+    height:50px;
+    /* padding: 20px 20px; */
     font-size: 2vw;
-    background-image: url(./assets/new_habit_button.png);
-    background-size: cover;
+    background-color: rgba(255, 255, 255, 0);
     color: white;
+    border: solid 2px white;
     border-radius: 10px;
     cursor: pointer;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    border-radius: 0%;
     transition: ease-in-out 0.2s;
+    /* font-family: "Press Start 2P", cursive; */
   }
   
   .new-habit-button:hover{
     transform: scale(1.1);
+    background-color: rgba(240, 248, 255, 0.306);
   }
   
   /* Habit Card */
@@ -48,6 +55,7 @@
   }
   .habit-content p {
     margin: 20px 0; /* Adds space above and below each text */
+    color:black;
   }
   
   

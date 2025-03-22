@@ -1,0 +1,100 @@
+.calendar-page{
+    background-image: url("./assets/background8.jpg");
+    height:100vh;
+    background-size:cover;
+    background-repeat:no-repeat;
+    /* background-color:#9d8126; */
+} 
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
+    gap: 40px; 
+    justify-content: center; 
+    align-items: start; 
+    padding-left: 50px;
+    overflow-y: auto; 
+    scrollbar-width: none;
+    height: 100vh;
+    padding-left:300px;
+    padding-right: 80px;
+}
+
+/* ✅ Center each habit calendar inside the grid */
+.habit-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* ✅ Ensures all titles are centered and aligned */
+.habit-calendar h2 {
+    text-align: center;
+    color:#ffffff;
+    font-size: medium;
+    font-family: "Press Start 2P", cursive;
+    padding-bottom: 20px;
+    padding-top:20px;   
+}
+
+/* ✅ Customize the calendar background */
+.react-calendar {
+    width: 350px; 
+    max-width: 100%;
+    background: #222;  
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-family: "Press Start 2P", cursive;
+
+}
+
+/* ✅ Style weekdays (Sun, Mon, Tue, etc.) */
+.react-calendar__month-view__weekdays {
+    color: gold;
+    font-weight: bold;
+    font-family: "Press Start 2P", cursive;
+}
+
+/* ✅ Style the calendar days */
+.react-calendar__tile {
+    font-size: 16px;
+    color: white;
+    background: transparent;
+    border-radius: 10%;
+    transition: 0.3s;
+}
+
+/* ✅ Highlight today’s date */
+.react-calendar__tile--now {
+    background: rgba(255, 255, 0, 0.5); /* Yellow tint */
+    border-radius: 10%;
+}
+
+/* ✅ Highlight completed days */
+.completed-day {
+    background-color: green !important;
+    color: white;
+    font-weight: bold;
+}
+
+/* ✅ Hover effect on days */
+.react-calendar__tile:hover {
+    /* background: rgba(255, 255, 255, 0.055); */
+    color:black;
+    cursor: pointer;
+}
+
+/* ✅ Customize navigation buttons (Prev/Next) */
+.react-calendar__navigation button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: "Press Start 2P", cursive;
+}
+.react-calendar__navigation button:hover {
+    color:#222;
+    border-radius: 5px;
+}

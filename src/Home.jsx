@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
+import TopBar from "./TopBar";  
+import MenuBar from "./MenuBar";
 
 
 
@@ -16,7 +18,6 @@ function Home() {
 
     const [tokens, setTokens] = useState(0);
 
-    // 🔹 Fetch tokens when the page loads
     useEffect(() => {
         const fetchTokens = async () => {
             const user = auth.currentUser;
@@ -26,7 +27,7 @@ function Home() {
             const userDoc = await getDoc(userDocRef);
 
             if (userDoc.exists()) {
-                setTokens(userDoc.data().tokens || 0); // ✅ Load tokens
+                setTokens(userDoc.data().tokens || 0); 
             }
         };
 
@@ -34,20 +35,22 @@ function Home() {
     }, []);
   return (
     <div className="home-container">
-    <header className="top-bar">
-        <div className="logo-title">
-            <img src={logo} alt="HabitQuest Logo" />
-            <h1>HabitQuest</h1>
-        </div>
-        <div className="token-display">
-            <img src={tokenIcon} alt="Token" className="token-icon" />
-            <span className="token-count">{tokens}</span>
-        </div>
-    </header>
+        {/* <header className="top-bar">
+            <div className="logo-title">
+                <img src={logo} alt="HabitQuest Logo" />
+                <h1>HabitQuest</h1>
+            </div>
+            <div className="token-display">
+                <img src={tokenIcon} alt="Token" className="token-icon" />
+                <span className="token-count">{tokens}</span>
+            </div>
+        </header> */}
+        <TopBar />
 
 
       <div className="main-content">
-        <div className="menu-container">
+        <MenuBar />
+        {/* <div className="menu-container">
             <Link to="/dailyupdate" className="menu-link">
                 <div className="menu-box">
                     <img src={menuBox} alt="Menu Box" />
@@ -79,7 +82,7 @@ function Home() {
                 </div>
             </Link>
 
-        </div>
+        </div> */}
 
         <div className="character-container">
             <div className="speech-bubble-container">
@@ -105,3 +108,4 @@ function Home() {
 }
 
 export default Home;
+

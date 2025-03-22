@@ -43,14 +43,6 @@ body {
     width: 100vw;
 }
   
-  /* Top Bar */
-/* .top-bar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1vh 2vw;
-} */
 .top-bar {
   width: 100%;
   display: flex;

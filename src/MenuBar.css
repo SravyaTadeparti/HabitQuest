@@ -1,0 +1,59 @@
+.menu-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+  }
+
+  .menu-box {
+    position: relative;
+    width: 15vw;
+  }
+  
+  .menu-box img {
+    width: 100%;
+  }
+  
+.menu-box p {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4vw;
+    text-align: center;
+}
+
+.menu-link {
+    text-decoration: none; /* Removes underline */
+  }
+  
+  .menu-box {
+    cursor: pointer; /* Makes it clickable */
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .menu-box:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    cursor: pointer; /* Ensures the cursor changes */
+  }
+  
+
+  .textbox p {
+    color: black;
+    text-shadow:  
+      2px 2px 0px white,  
+      -2px -2px 0px white,  
+      -2px 2px 0px white,  
+      2px -2px 0px white;  
+  }
+  .menu-box p {
+    color: black;
+    font-size: 1.2vw;
+    text-align: center;
+    text-shadow:  
+      2px 2px 0px white,  
+      -2px -2px 0px white,  
+      -2px 2px 0px white,  
+      2px -2px 0px white;  
+  }
+    
