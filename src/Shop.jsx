@@ -1,32 +1,60 @@
 import "./Shop.css";
 import { useState, useEffect } from "react";
-import { auth } from "./firebase"; // Removed Firestore
+import { auth, db } from "./firebase"; 
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import TopBar from "./TopBar";
 import MenuBar from "./MenuBar";
 import tokenIcon from "./assets/token.png"; 
 import rpgMerchant from "./assets/shopkeeper.png";
-import petImage from "./assets/placeholder.jpg"; // Change to your pet image
+import petImage from "./assets/placeholder.jpg";
 
 function Shop() {
-    const [tokens, setTokens] = useState(100); // Default to 100 coins for now
-    const pet = { id: "001", name: "Mystic Fox", price: 10, image: petImage }; // Hardcoded pet
+    const [tokens, setTokens] = useState(0); // Default to 0 coins
+    const pet = { id: "001", name: "Mystic Fox", price: 10, image: petImage }; // Example pet
 
-    // Simulating fetching user tokens (No Firestore)
+    // Fetch user's token count from Firestore
     useEffect(() => {
-        const user = auth.currentUser;
-        if (!user) return;
+        const fetchTokens = async () => {
+            const user = auth.currentUser;
+            if (!user) return;
 
-        // Fake token fetch
-        setTokens(100);
+            const userDocRef = doc(db, "users", user.uid);
+            const userDoc = await getDoc(userDocRef);
+
+            if (userDoc.exists()) {
+                setTokens(userDoc.data().tokens || 0);
+            }
+        };
+
+        fetchTokens();
     }, []);
 
-    // Buy pet function
-    const buyPet = (pet) => {
+    // Buy pet function (deduct coins in Firestore)
+    const buyPet = async (pet) => {
+        const user = auth.currentUser;
+        if (!user) return alert("You must be logged in!");
+
         if (tokens < pet.price) {
             alert("Not enough coins!");
             return;
         }
-        setTokens(tokens - pet.price);
+
+        const userDocRef = doc(db, "users", user.uid);
+        const newBalance = tokens - pet.price;
+
+        try {
+            await updateDoc(userDocRef, { tokens: newBalance }); // Update Firestore
+            setTokens(newBalance); // Update UI immediately
+
+            // Retrieve existing pets and add the new one
+            const savedPets = JSON.parse(localStorage.getItem("myPets")) || [];
+            savedPets.push(pet);
+            localStorage.setItem("myPets", JSON.stringify(savedPets));
+
+            alert(`${pet.name} has been added to your collection!`);
+        } catch (error) {
+            console.error("Error updating tokens:", error);
+        }
     };
 
     return (
@@ -43,15 +71,9 @@ function Shop() {
                     </div>
                 </div>
 
-                {/* Token Display */}
-                <div className="token-display">
-                    <img src={tokenIcon} alt="Token" className="token-icon" />
-                    <span className="token-count">{tokens} Coins</span>
-                </div>
-
                 {/* Pet Shop Grid */}
                 <div className="pet-shop">
-                    {Array(20).fill(pet).map((pet, index) => (
+                    {Array(20).fill(pet).map((_, index) => (
                         <div key={index} className="pet-item">
                             <img src={pet.image} alt={pet.name} className="pet-img" />
                             <h3>{pet.name}</h3>
