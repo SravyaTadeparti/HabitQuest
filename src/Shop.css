@@ -1,4 +1,4 @@
-/* ✅ Apply universal reset for consistent spacing */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,6 @@ body {
     overflow: auto; /* Allow scrolling when needed */
 }
 
-/* ✅ Fix Shop Container Alignment */
 .shop-container {
     background-color: #1a1a1a;
     background-image: url(./assets/shop_bg.jpg);
@@ -28,7 +27,6 @@ body {
     padding: 20px;
 }
 
-/* ✅ Center Shop Content */
 .shop-container .shop-content {
     width: 80%;
     max-width: 1200px;
@@ -40,7 +38,6 @@ body {
     text-align: center;
 }
 
-/* ✅ Align Merchant Area */
 .shop-container .merchant-area {
     display: flex;
     align-items: center;
@@ -49,12 +46,10 @@ body {
     gap: 15px;
 }
 
-/* ✅ Adjust Merchant Image */
 .shop-container .merchant-img {
     width: 250px;
 }
 
-/* ✅ Improve Speech Box */
 .shop-container .speech-box {
     background: rgba(255, 255, 255, 0.9);
     color: black;
@@ -67,7 +62,7 @@ body {
     max-width: 90%; /* Prevent text overflow */
 }
 
-/* ✅ Fix Token Display Alignment */
+
 .shop-container .token-display {
     display: flex;
     align-items: center;
@@ -80,13 +75,11 @@ body {
     width: fit-content;
 }
 
-/* ✅ Ensure Token Icon is Aligned */
 .shop-container .token-icon {
     width: 30px;
     margin-right: 10px;
 }
 
-/* ✅ Style Pet Shop Section */
 .shop-container .pet-shop {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Creates a 5x4 grid */
@@ -97,7 +90,6 @@ body {
     padding: 20px;
 }
 
-/* ✅ Pet Item Styling */
 .shop-container .pet-item {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
@@ -119,7 +111,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* ✅ Buy Button Styling */
 .shop-container .pet-item button {
     background: gold;
     border: none;
