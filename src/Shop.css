@@ -29,7 +29,7 @@ body {
 }
 
 /* ✅ Center Shop Content */
-.shop-content {
+.shop-container .shop-content {
     width: 80%;
     max-width: 1200px;
     margin: auto;
@@ -41,7 +41,7 @@ body {
 }
 
 /* ✅ Align Merchant Area */
-.merchant-area {
+.shop-container .merchant-area {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,12 +50,12 @@ body {
 }
 
 /* ✅ Adjust Merchant Image */
-.merchant-img {
+.shop-container .merchant-img {
     width: 250px;
 }
 
 /* ✅ Improve Speech Box */
-.speech-box {
+.shop-container .speech-box {
     background: rgba(255, 255, 255, 0.9);
     color: black;
     padding: 15px;
@@ -68,7 +68,7 @@ body {
 }
 
 /* ✅ Fix Token Display Alignment */
-.token-display {
+.shop-container .token-display {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,13 +81,13 @@ body {
 }
 
 /* ✅ Ensure Token Icon is Aligned */
-.token-icon {
+.shop-container .token-icon {
     width: 30px;
     margin-right: 10px;
 }
 
 /* ✅ Style Pet Shop Section */
-.pet-shop {
+.shop-container .pet-shop {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Creates a 5x4 grid */
     gap: 20px;
@@ -98,7 +98,7 @@ body {
 }
 
 /* ✅ Pet Item Styling */
-.pet-item {
+.shop-container .pet-item {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
     border-radius: 10px;
@@ -107,12 +107,12 @@ body {
     transition: transform 0.2s ease-in-out;
 }
 
-.pet-item:hover {
+.shop-container .pet-item:hover {
     transform: scale(1.05);
 }
 
 /* ✅ Pet Image */
-.pet-img {
+.shop-container .pet-img {
     width: 100px;
     height: 100px;
     object-fit: contain;
@@ -120,7 +120,7 @@ body {
 }
 
 /* ✅ Buy Button Styling */
-.pet-item button {
+.shop-container .pet-item button {
     background: gold;
     border: none;
     padding: 10px;
@@ -131,12 +131,11 @@ body {
     transition: 0.2s;
 }
 
-.pet-item button:hover {
+.shop-container .pet-item button:hover {
     background: orange;
 }
 
-/* ✅ Fix Top Bar Layout */
-.top-bar {
+.shop-container .top-bar {
     width: 100%;
     display: flex;
     align-items: center;
@@ -144,24 +143,24 @@ body {
     padding: 1vh 2vw;
 }
 
-/* ✅ Ensure Logo and Title Stay Together */
-.logo-title {
+.shop-container .logo-title {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* ✅ Adjust Menu Container */
-.menu-container {
+
+.shop-container .menu-container {
     position: absolute;
+    top: 15vh;
     left: 2vw;
     display: flex;
     flex-direction: column;
     gap: 2vh;
 }
 
-/* ✅ Fix Speech Bubble Position */
-.speech-bubble-container {
+
+.shop-container .speech-bubble-container {
     position: absolute;
     top: 0px;
     right: -180px;
