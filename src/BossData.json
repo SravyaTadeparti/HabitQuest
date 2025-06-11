@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Slime",
+    "image": "/monster3.png",
+    "hp": 30,
+    "attack": 5,
+    "description": "A weak but sticky blob."
+  },
+  {
+    "name": "Goblin",
+    "image": "/FlameGriffin.png",
+    "hp": 50,
+    "attack": 10,
+    "description": "Crafty and fast."
+  },
+  {
+    "name": "Skeleton",
+    "image": "/monster-skeleton.png",
+    "hp": 70,
+    "attack": 12,
+    "description": "Clatters in the dark with a rusty blade."
+  },
+  {
+    "name": "Wolf Beast",
+    "image": "/wolf.png",
+    "hp": 90,
+    "attack": 15,
+    "description": "A feral creature with razor-sharp fangs."
+  },
+  {
+    "name": "Dark Mage",
+    "image": "/monster_darkmage.png",
+    "hp": 110,
+    "attack": 20,
+    "description": "Casts dark spells from the shadows."
+  },
+  {
+    "name": "Orc Brute",
+    "image": "/orc.png",
+    "hp": 130,
+    "attack": 25,
+    "description": "Massive and ruthless with crushing strength."
+  },
+  {
+    "name": "Venom Serpent",
+    "image": "/monster_snake.png",
+    "hp": 150,
+    "attack": 30,
+    "description": "Strikes fast and poisons its prey."
+  },
+  {
+    "name": "Lava Golem",
+    "image": "/monster_lavagolem.png",
+    "hp": 180,
+    "attack": 35,
+    "description": "Slow but devastating, made of molten rock."
+  },
+  {
+    "name": "Shadow Reaper",
+    "image": "/monster_shadow.png",
+    "hp": 200,
+    "attack": 40,
+    "description": "Haunts souls and drains life force."
+  },
+  {
+    "name": "Storm Djinn",
+    "image": "/monster_djinn.png",
+    "hp": 230,
+    "attack": 45,
+    "description": "Controls lightning and strikes with fury."
+  },
+  {
+    "name": "Celestial Warden",
+    "image": "/monster_guardian.png",
+    "hp": 260,
+    "attack": 50,
+    "description": "Protector of the ancient realms, powerful and noble."
+  },
+  {
+    "name": "Nether Dragon",
+    "image": "/monster_dragon.png",
+    "hp": 300,
+    "attack": 60,
+    "description": "The ultimate foe with fire, wings, and wrath."
+  }
+]

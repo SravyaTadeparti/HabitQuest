@@ -18,7 +18,7 @@ body {
       -2px 2px 0px white,  
       2px -2px 0px white;  
   }
-  .menu-box p {
+  /* .menu-box p {
     color: black;
     font-size: 1.2vw;
     text-align: center;
@@ -28,7 +28,7 @@ body {
       -2px 2px 0px white,  
       2px -2px 0px white;  
   }
-    
+     */
 
   /* Home Page Container */
 .home-container {
@@ -43,13 +43,13 @@ body {
     width: 100vw;
 }
   
-.top-bar {
+/* .top-bar {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* ✅ Space elements correctly */
+  justify-content: space-between; 
   padding: 1vh 2vw;
-}
+} */
 
 /* ✅ Ensure the logo and title stay together */
 .logo-title {
@@ -75,9 +75,9 @@ body {
     position: relative;
   }
   
-  .menu-container {
+  /* .menu-container {
     position: absolute;
-    left: 2vw; /* Keeps menu close to the left */
+    left: 2vw; 
     display: flex;
     flex-direction: column;
     gap: 2vh;
@@ -102,18 +102,18 @@ body {
 }
 
 .menu-link {
-    text-decoration: none; /* Removes underline */
+    text-decoration: none; 
   }
   
   .menu-box {
-    cursor: pointer; /* Makes it clickable */
+    cursor: pointer; 
     transition: transform 0.2s ease-in-out;
   }
   
   .menu-box:hover {
-    transform: scale(1.05); /* Slight zoom effect */
-    cursor: pointer; /* Ensures the cursor changes */
-  }
+    transform: scale(1.05); 
+    cursor: pointer; 
+  } */
   
 
 .character-container {

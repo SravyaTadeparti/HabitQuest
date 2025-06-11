@@ -1,0 +1,27 @@
+body{
+    width:100%;
+    height:100%;
+    font-family: "Press Start 2P", cursive;
+}
+
+.battle-page{
+    background-image: url("/arena5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.boss-img{
+    position: absolute;
+    bottom:100px;
+    right:100px;
+}
+
+.pet-fight{
+    position: absolute;
+    bottom:100px;
+    left:100px;
+    min-width: 300px;
+    min-height: 300px;
+}
+

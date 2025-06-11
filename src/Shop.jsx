@@ -8,15 +8,33 @@ import tokenIcon from "./assets/token.png";
 import rpgMerchant from "./assets/shopkeeper.png";
 import petImage from "./assets/placeholder.jpg";
 import { motion } from "framer-motion";
+import petData from './PetData.json';
 
 function Shop() {
     const [tokens, setTokens] = useState(0);
-    const pet = { id: "001", name: "Mystic Fox", price: 10, image: petImage };
+
+    const petList = Object.entries(petData).map(([name, data]) => ({
+        name,
+        image: data.image,
+        characteristics: data.characteristics,
+        category: data.category,
+        price: Math.floor(Math.random() * 100 + 50)
+    }));
+
+    const categoryColors = {
+        strength: 'border-red',
+        speed: 'border-blue',
+        healing: 'border-green',
+        helping: 'border-orange'
+    };
+
+
 
     const [showWheel, setShowWheel] = useState(false);
     const [spinning, setSpinning] = useState(false);
     const [prize, setPrize] = useState(null);
     const [rotation, setRotation] = useState(0);
+
 
     const rewards = ["5 Tokens", "10 Tokens", "15 Tokens", "Mystic Fox"];
     const segmentAngle = 360 / rewards.length;
@@ -68,7 +86,7 @@ function Shop() {
 
         setSpinning(true);
         const randomIndex = Math.floor(Math.random() * rewards.length);
-        const offset = segmentAngle / 2; // Offset to center the selection
+        const offset = segmentAngle / 2;
         const newRotation = rotation + (360 * 5) + (randomIndex * segmentAngle) + offset;
 
         setRotation(newRotation);
@@ -108,14 +126,27 @@ function Shop() {
                 </div>
 
                 <div className="pet-shop">
-                    {Array(20).fill(pet).map((_, index) => (
+                    {/* {Array(20).fill(pet).map((pet, index) => (
                         <div key={index} className="pet-item">
                             <img src={pet.image} alt={pet.name} className="pet-img" />
                             <h3>{pet.name}</h3>
                             <p>{pet.price} Coins</p>
                             <button onClick={() => buyPet(pet)}>Buy</button>
                         </div>
+                    ))} */}
+                    {petList.map((pet, index) => (
+                    <div
+                        key={index}
+                        className={`pet-item ${pet.category}`}
+                    >
+                        <img src={pet.image} alt={pet.name} className="pet-img" />
+                        <h4>{pet.name}</h4>
+                        <p>{pet.price} Coins</p>
+                        <button onClick={() => buyPet(pet)}>Buy</button>
+                    </div>
                     ))}
+
+
                 </div>
 
                 <motion.div 

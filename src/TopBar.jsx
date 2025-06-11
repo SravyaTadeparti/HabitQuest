@@ -3,6 +3,7 @@ import tokenIcon from "./assets/token.png";
 import { useState, useEffect } from "react";
 import { db, auth } from "./firebase";
 import { doc, onSnapshot } from "firebase/firestore";
+import "./TopBar.css";
 
 function TopBar() {
     const [tokens, setTokens] = useState(0);

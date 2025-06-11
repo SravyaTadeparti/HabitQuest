@@ -2,7 +2,10 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 3vh;
+    left:20px;
+    z-index:1;
+    top:100px;
   }
 
   .menu-box {
@@ -24,17 +27,17 @@
 }
 
 .menu-link {
-    text-decoration: none; /* Removes underline */
+    text-decoration: none; 
   }
   
   .menu-box {
-    cursor: pointer; /* Makes it clickable */
+    cursor: pointer;
     transition: transform 0.2s ease-in-out;
   }
   
   .menu-box:hover {
-    transform: scale(1.05); /* Slight zoom effect */
-    cursor: pointer; /* Ensures the cursor changes */
+    transform: scale(1.05); 
+    cursor: pointer; 
   }
   
 

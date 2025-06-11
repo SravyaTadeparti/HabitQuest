@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import Login from "./Login";
 import DailyUpdate from "./DailyUpdate";
+import Battle from "./Battle";
+import LevelPathMap from "./LevelPathMap";
 
 // 🔹 PrivateRoute - Protects all authenticated routes
 function PrivateRoute() {
@@ -20,19 +22,18 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Public Route */}
         <Route path="/login" element={<Login />} />
 
-        {/* Protected Routes - Only accessible after login */}
         <Route path="/" element={<PrivateRoute />}>
-          <Route index element={<Home />} /> {/* Default child of "/" */}
+          <Route index element={<Home />} />
           <Route path="habits" element={<Habits />} />
           <Route path="dailyupdate" element={<DailyUpdate />} />
 
           <Route path="shop" element={<Shop />} />
           <Route path="calendar" element={<Calendar />} />
-          <Route path="profile" element={<Profile />} />
           <Route path="pets" element={<Pets />} />
+          <Route path="battle/:levelId" element={<Battle />} />
+          <Route path="levelpathmap" element={<LevelPathMap/>} />
         </Route>
       </Routes>
     </Router>

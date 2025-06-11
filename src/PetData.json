@@ -1,0 +1,229 @@
+{
+    "Mythical Dragon": {
+        "characteristics": [
+        "Wise and strategic thinker",
+        "Protective of those it trusts",
+        "Fiercely independent",
+        "Respects strength and courage",
+        "Slow to anger but unstoppable when provoked"
+        ],
+        "image": "/MythicalDragon.png",
+        "strength": 10,
+        "speed": 6,
+        "healing": 5,
+        "helping": 7,
+        "category": "strength"
+    },
+    "Shadow Phoenix": {
+        "characteristics": [
+        "Mysterious and introspective",
+        "Prefers solitude",
+        "Calm under pressure",
+        "Rises stronger after setbacks",
+        "Loyal to a chosen few"
+        ],
+        "image": "/ShadowPhoenix.png",
+        "strength": 6,
+        "speed": 7,
+        "healing": 9,
+        "helping": 6,
+        "category": "healing"
+    },
+    "Frost Wolf": {
+        "characteristics": [
+        "Loyal and dependable",
+        "Prefers the company of a close-knit group",
+        "Quiet but observant",
+        "Strong sense of duty",
+        "Protective of the weak"
+        ],
+        "image": "/FrostWolf.png",
+        "strength": 7,
+        "speed": 6,
+        "healing": 6,
+        "helping": 9,
+        "category": "helping"
+    },
+    "Celestial Tiger": {
+        "characteristics": [
+        "Proud and confident",
+        "Loves freedom and open spaces",
+        "Has a strong moral compass",
+        "Independent but respectful",
+        "Acts with grace and precision"
+        ],
+        "image": "/CelestialTiger.png",
+        "strength": 8,
+        "speed": 9,
+        "healing": 4,
+        "helping": 5,
+        "category": "speed" 
+    },
+    "Storm Serpent": {
+        "characteristics": [
+        "Unpredictable and intense",
+        "Emotionally charged",
+        "Loves dramatic flair",
+        "Can be impulsive but passionate",
+        "Thrives in chaotic situations"
+        ],
+        "image": "/StormSerpent.png",
+        "strength": 9,
+        "speed": 9,
+        "healing": 3,
+        "helping": 5,
+        "category": "strength"  
+    },
+    "Lunar Fox": {
+        "characteristics": [
+        "Playful and clever",
+        "Highly intuitive",
+        "Prefers to work in the background",
+        "Emotionally sensitive",
+        "Has a mischievous side"
+        ],
+        "image": "/LunarFox.png",
+        "strength": 4,
+        "speed": 8,
+        "healing": 5,
+        "helping": 8,
+        "category": "speed"  
+    },
+    "Flame Griffin": {
+        "characteristics": [
+        "Courageous and bold",
+        "Natural leader",
+        "Protects the vulnerable",
+        "Driven by honor",
+        "Values loyalty above all"
+        ],
+        "image": "/FlameGriffin.png",
+        "strength": 8,
+        "speed": 7,
+        "healing": 4,
+        "helping": 9,
+        "category": "helping"
+    },
+    "Crystal Turtle": {
+        "characteristics": [
+        "Patient and wise",
+        "Empathetic listener",
+        "Rarely rushed or stressed",
+        "Grounded and nurturing",
+        "Offers quiet support and insight"
+        ],
+        "image": "/CrystalTurtle.png",
+        "strength": 5,
+        "speed": 2,
+        "healing": 10,
+        "helping": 10,
+        "category": "healing"  
+    },
+    "Thunder Roc": {
+        "characteristics": [
+        "Confident and expressive",
+        "Dominates with presence",
+        "Enjoys attention and admiration",
+        "Highly competitive",
+        "Leads with passion and charisma"
+        ],
+        "image": "/ThunderRoc.png",
+        "strength": 9,
+        "speed": 8,
+        "healing": 3,
+        "helping": 6,
+        "category": "strength"
+    },
+    "Mystic Unicorn": {
+        "characteristics": [
+        "Gentle and empathetic",
+        "Believes in the good in others",
+        "Compassionate and healing presence",
+        "Values harmony",
+        "Inspires hope and kindness"
+        ],
+        "image": "/MysticUnicorn.png",
+        "strength": 4,
+        "speed": 6,
+        "healing": 10,
+        "helping": 10,
+        "category": "healing"
+    },
+    "Ember Lynx": {
+        "characteristics": [
+        "Adventurous and daring",
+        "Always curious",
+        "Reacts on instinct",
+        "Protective of friends",
+        "Playful with a fiery spark"
+        ],
+        "image": "/EmberLynx.png",
+        "strength": 7,
+        "speed": 9,
+        "healing": 4,
+        "helping": 6,
+        "category": "speed"
+    },
+    "Verdant Beetle": {
+        "characteristics": [
+        "Grounded and patient",
+        "Thinks before acting",
+        "Steady and dependable",
+        "Enjoys calm environments",
+        "Drawn to nature"
+        ],
+        "image": "/VerdantBeetle.png",
+        "strength": 6,
+        "speed": 3,
+        "healing": 8,
+        "helping": 7,
+        "category": "healing"
+    },
+    "Frost Moth": {
+        "characteristics": [
+        "Shy but empathetic",
+        "Finds beauty in stillness",
+        "Drawn to moonlight",
+        "Highly sensitive",
+        "Comforts others quietly"
+        ],
+        "image": "/FrostMoth.png",
+        "strength": 3,
+        "speed": 4,
+        "healing": 9,
+        "helping": 8,
+        "category": "healing"
+    },
+    "Solar Cub": {
+        "characteristics": [
+        "Warm and cheerful",
+        "Seeks attention and affection",
+        "Brings joy to others",
+        "Loyal to a fault",
+        "Energized by sunlight"
+        ],
+        "image": "/SolarCub.png",
+        "strength": 5,
+        "speed": 7,
+        "healing": 7,
+        "helping": 9,
+        "category": "helping"
+    },
+    "Echo Wyrmling": {
+        "characteristics": [
+        "Curious about sound and rhythm",
+        "Likes mimicking voices",
+        "Silly but clever",
+        "Energetic and unpredictable",
+        "Forms deep bonds"
+        ],
+        "image": "/EchoWyrmling.png",
+        "strength": 4,
+        "speed": 8,
+        "healing": 5,
+        "helping": 7,
+        "category": "speed"
+    }
+}
+
+

@@ -151,7 +151,6 @@ function Habits() {
               </p>
               <button onClick={addHabit}>Confirm</button>
 
-              {/* Trash Can (Visible even before confirming) */}
               <button className="delete-button" onClick={cancelNewHabit}>
                 <img src={trashIcon} alt="Delete" />
               </button>

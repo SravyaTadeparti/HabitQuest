@@ -22,7 +22,7 @@ function MyPets() {
             <div className="my-pets-content">
                 <h1>My Pets</h1>
                 {myPets.length === 0 ? (
-                    <p>You don’t own any pets yet! Go to the <Link to="/shop">Shop</Link> to buy some.</p>
+                    <p>You don't own any pets yet! Go to the <Link to="/shop">Shop</Link> to buy some.</p>
                 ) : (
                     <div className="pet-collection">
                         {myPets.map((pet, index) => (

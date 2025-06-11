@@ -14,6 +14,7 @@ import MenuBar from "./MenuBar";
 
 
 
+
 function Home() {
 
     const [tokens, setTokens] = useState(0);
@@ -35,54 +36,12 @@ function Home() {
     }, []);
   return (
     <div className="home-container">
-        {/* <header className="top-bar">
-            <div className="logo-title">
-                <img src={logo} alt="HabitQuest Logo" />
-                <h1>HabitQuest</h1>
-            </div>
-            <div className="token-display">
-                <img src={tokenIcon} alt="Token" className="token-icon" />
-                <span className="token-count">{tokens}</span>
-            </div>
-        </header> */}
+
         <TopBar />
-
-
-      <div className="main-content">
         <MenuBar />
-        {/* <div className="menu-container">
-            <Link to="/dailyupdate" className="menu-link">
-                <div className="menu-box">
-                    <img src={menuBox} alt="Menu Box" />
-                    <p>Habits</p>
-                </div>
-            </Link>
-            <Link to="/profile" className="menu-link">
-                <div className="menu-box">
-                    <img src={menuBox} alt="Menu Box" />
-                    <p>Profile</p>
-                </div>
-            </Link>
-            <Link to="/calendar" className="menu-link">
-                <div className="menu-box">
-                    <img src={menuBox} alt="Menu Box" />
-                    <p>Calendar</p>
-                </div>
-            </Link>
-            <Link to="/shop" className="menu-link">
-                <div className="menu-box">
-                    <img src={menuBox} alt="Menu Box" />
-                        <p data-text="Shop">Shop</p>
-                </div>
-            </Link>
-            <Link to="/pets" className="menu-link">
-                <div className="menu-box">
-                    <img src={menuBox} alt="Menu Box" />
-                    <p>Pets</p>
-                </div>
-            </Link>
 
-        </div> */}
+        <div className="main-content">
+
 
         <div className="character-container">
             <div className="speech-bubble-container">
