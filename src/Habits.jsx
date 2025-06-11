@@ -60,7 +60,7 @@ function Habits() {
   const addHabit = async () => {
     if (!newHabit.trim() || !difficulty.trim()) return;
   
-    const tokenAmount = getTokenAmount(difficulty); // ✅ Get token amount based on difficulty
+    const tokenAmount = getTokenAmount(difficulty); 
   
     const newHabitObj = {
       id: Date.now(),

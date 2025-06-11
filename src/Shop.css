@@ -124,13 +124,54 @@ body {
 }
 
 .pet-item.healing {
-  border: solid 2px green;
+  border: solid 2px rgb(38, 204, 38);
 }
 
 .pet-item.helping {
-  border: solid 2px orange;
+  border: solid 2px rgb(255, 0, 255);
 }
 
+.pet-display-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 100px;
+    overflow-x: auto; /* enable horizontal scrolling */
+    /* padding: 20px; */
+    max-width: 100%;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overflow-y: visible;
+}
+
+.pet-card {
+    width: 100px;
+    height: 100px;
+    flex: 0 0 auto; /* prevent shrinking */
+    transition: transform 0.2s ease-in-out;
+}
+
+.pet-card img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain; /* or 'cover' if you prefer */
+}
+
+.pet-card:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.selected-pet {
+    transform: scale(1.3)
+}
+
+.arrow-img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 5px;
+}
 
 .shop-container .pet-item:hover {
     transform: scale(1.05);

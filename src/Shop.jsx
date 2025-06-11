@@ -9,9 +9,14 @@ import rpgMerchant from "./assets/shopkeeper.png";
 import petImage from "./assets/placeholder.jpg";
 import { motion } from "framer-motion";
 import petData from './PetData.json';
+import { arrayUnion } from "firebase/firestore";
 
 function Shop() {
     const [tokens, setTokens] = useState(0);
+    const [boughtpets, setBoughtpets] = useState([]);
+    const [selectedPet, setSelectedPet] = useState(null);
+
+
 
     const petList = Object.entries(petData).map(([name, data]) => ({
         name,
@@ -38,6 +43,41 @@ function Shop() {
 
     const rewards = ["5 Tokens", "10 Tokens", "15 Tokens", "Mystic Fox"];
     const segmentAngle = 360 / rewards.length;
+
+    useEffect(() => {
+        const fetchPets = async () => {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            const userDocRef = doc(db, "users", user.uid);
+            const userSnap = await getDoc(userDocRef);
+
+            if (userSnap.exists()) {
+                const userData = userSnap.data();
+                console.log(userData.pets)
+                setBoughtpets(userData.pets || []);
+            }
+        };
+
+        fetchPets();
+    }, []);
+
+    useEffect(() => {
+        const fetchSelectedPet = async () => {
+            const user = auth.currentUser;
+            if (!user) return;
+
+            const userDocRef = doc(db, "users", user.uid);
+            const userSnap = await getDoc(userDocRef);
+
+            if (userSnap.exists()) {
+                const userData = userSnap.data();
+                setSelectedPet(userData.selectedPet || null);
+            }
+        };
+
+        fetchSelectedPet();
+    }, []);
 
     useEffect(() => {
         const fetchTokens = async () => {
@@ -68,18 +108,36 @@ function Shop() {
         const newBalance = tokens - pet.price;
 
         try {
-            await updateDoc(userDocRef, { tokens: newBalance });
+            // Update tokens and add pet to "pets" array in Firestore
+            await updateDoc(userDocRef, {
+                tokens: newBalance,
+                pets: arrayUnion(pet)
+            });
+
+            boughtpets.push(pet)
+
             setTokens(newBalance);
-
-            const savedPets = JSON.parse(localStorage.getItem("myPets")) || [];
-            savedPets.push(pet);
-            localStorage.setItem("myPets", JSON.stringify(savedPets));
-
             alert(`${pet.name} has been added to your collection!`);
         } catch (error) {
-            console.error("Error updating tokens:", error);
+            console.error("Error updating tokens or pets:", error);
         }
     };
+
+const handlePetSelect = async (pet) => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const userDocRef = doc(db, "users", user.uid);
+    try {
+        await updateDoc(userDocRef, {
+            selectedPet: pet
+        });
+        setSelectedPet(pet); // ✅ Update local state immediately
+    } catch (error) {
+        console.error("Error setting selected pet:", error);
+    }
+};
+
 
     const spinWheel = async () => {
         if (spinning) return;
@@ -118,22 +176,38 @@ function Shop() {
             <TopBar />
             <MenuBar />
             <div className="shop-content">
-                <div className="merchant-area">
+                {/* <div className="merchant-area">
                     <img src={rpgMerchant} alt="Merchant" className="merchant-img" />
                     <div className="speech-box">
                         <p>“Ah, a fine traveler! Would you like to buy a pet?”</p>
                     </div>
+                </div> */}
+                {/* <div className="pet-display-container">
+                    {boughtpets.length === 0 ? (
+                        <p>No pets yet!</p>
+                    ) : (
+                        boughtpets.map((pet, idx) => (
+                        <div key={idx} className="pet-card" onClick={() => handlePetSelect(pet)}>
+                            <img src={pet.image} alt={pet.name} className="pet-img" />
+                        </div>
+                        ))
+                    )}
+                </div> */}
+                <div className="pet-display-container">
+                    {boughtpets.map((pet, index) => (
+                        <div key={index} className="pet-card-wrapper">
+                        {selectedPet?.name === pet.name && (
+                            <img src="/FrostMoth.png" alt="Selected" className="arrow-img" />
+                        )}
+                        <div className="pet-card" onClick={() => handlePetSelect(pet)}>
+                            <img src={pet.image} alt={pet.name} />
+                        </div>
+                        </div>
+                    ))}
                 </div>
 
+
                 <div className="pet-shop">
-                    {/* {Array(20).fill(pet).map((pet, index) => (
-                        <div key={index} className="pet-item">
-                            <img src={pet.image} alt={pet.name} className="pet-img" />
-                            <h3>{pet.name}</h3>
-                            <p>{pet.price} Coins</p>
-                            <button onClick={() => buyPet(pet)}>Buy</button>
-                        </div>
-                    ))} */}
                     {petList.map((pet, index) => (
                     <div
                         key={index}

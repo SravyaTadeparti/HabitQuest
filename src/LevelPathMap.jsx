@@ -57,7 +57,7 @@ const LevelPathMap = () => {
           align-items: center;
           min-height: 100vh;
           font-family: "Press Start 2P", cursive;
-          background-image: url("./public/background5.jpg");
+          background-image: url("/background5.jpg");
           background-repeat:no-repeat;
           background-size:cover;
 
@@ -175,7 +175,7 @@ const LevelPathMap = () => {
           ))}
 
         <image // Changed from rect to image
-            href="./public/CrystalTurtle.png" 
+            href="/CrystalTurtle.png" 
             x={characterPosition.x}
             y={characterPosition.y}
             width={charSize}
