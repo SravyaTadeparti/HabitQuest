@@ -13,11 +13,11 @@ import TopBar from "./TopBar";
 import MenuBar from "./MenuBar";
 
 
-
-
 function Home() {
 
     const [tokens, setTokens] = useState(0);
+    const [selectedPet, setSelectedPet] = useState(null);
+
 
     useEffect(() => {
         const fetchTokens = async () => {
@@ -34,6 +34,23 @@ function Home() {
 
         fetchTokens();
     }, []);
+
+    useEffect(() => {
+    const fetchSelectedPet = async () => {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+        const data = userDoc.data();
+        setSelectedPet(data.selectedPet || null);
+        }
+    };
+
+    fetchSelectedPet();
+    }, []);
+
+
   return (
     <div className="home-container">
 
@@ -43,25 +60,30 @@ function Home() {
         <div className="main-content">
 
 
-        <div className="character-container">
-            <div className="speech-bubble-container">
-                <img src={speechBubble} alt="Speech Bubble" className="speech-bubble" />
+            <div className="character-container">
+                <div className="speech-bubble-container">
+                    <img src={speechBubble} alt="Speech Bubble" className="speech-bubble" />
+                </div>
+                <motion.img
+                    src={character}
+                    alt="Pixel Character"
+                    className="character"
+                    animate={{
+                        y: [0, -5, 0], 
+                    }}
+                    transition={{
+                        duration: 2, 
+                        repeat: Infinity, 
+                        ease: "easeInOut", 
+                    }}
+                />
             </div>
-            <motion.img
-                src={character}
-                alt="Pixel Character"
-                className="character"
-                animate={{
-                    y: [0, -5, 0], 
-                }}
-                transition={{
-                    duration: 2, 
-                    repeat: Infinity, 
-                    ease: "easeInOut", 
-                }}
-            />
+            <div className="char-pet-container">
+                {selectedPet && (
+                    <img className="char-pet-img" src={selectedPet.image} alt={selectedPet.name} />
+                )}
+            </div>
         </div>
-      </div>
     </div>
   );
 }

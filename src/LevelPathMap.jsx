@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import TopBar from "./TopBar";
 import MenuBar from "./MenuBar";
 import { Link } from "react-router-dom"; 
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "./firebase"; 
 
 
 const levels = [
@@ -29,6 +31,25 @@ const LevelPathMap = () => {
     y: levels[0].y - charSize / 2  
   });
 
+  const [selectedPet, setSelectedPet] = useState(null);
+  const [highestLevel, setHighestLevel] = useState(1);
+
+  useEffect(() => {
+    const fetchLevel = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        setHighestLevel(userSnap.data().highestLevel || 1);
+      }
+    };
+
+    fetchLevel();
+  }, []);
+
   useEffect(() => {
     const targetLevel = levels.find(level => level.id === currentLevelId);
     if (targetLevel) {
@@ -42,6 +63,21 @@ const LevelPathMap = () => {
   const handleLevelClick = (levelId) => {
     setCurrentLevelId(levelId);
   };
+
+  useEffect(() => {
+      const fetchSelectedPet = async () => {
+          const user = auth.currentUser;
+          if (!user) return;
+
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          if (userDoc.exists()) {
+          const data = userDoc.data();
+          setSelectedPet(data.selectedPet || null);
+          }
+      };
+
+      fetchSelectedPet();
+      }, []);
 
   return (
     <div className="level-path-map-container">
@@ -150,38 +186,50 @@ const LevelPathMap = () => {
             );
           })}
 
-          {levels.map((level) => (
-            <g
-              key={`level-${level.id}`}
-              className="level-group" 
-              onClick={() => handleLevelClick(level.id)} 
-            >
-              <rect
-                x={level.x - levelSize / 2} 
-                y={level.y - levelSize / 2} 
-                width={levelSize}
-                height={levelSize}
-                className="level-square" 
-              />
-              <text
-                x={level.x}
-                y={level.y + 6} 
-                textAnchor="middle" 
-                className="level-text"
-              >
-                {level.id}
-              </text>
-            </g>
-          ))}
+          {levels.map((level) => {
+  const isUnlocked = level.id <= highestLevel + 1;
 
-        <image // Changed from rect to image
-            href="/CrystalTurtle.png" 
+  return (
+    <g
+      key={`level-${level.id}`}
+      className={`level-group ${isUnlocked ? '' : 'locked'}`}
+      onClick={() => {
+        if (isUnlocked) handleLevelClick(level.id);
+      }}
+      style={{ cursor: isUnlocked ? 'pointer' : 'not-allowed' }}
+    >
+      <rect
+        x={level.x - levelSize / 2}
+        y={level.y - levelSize / 2}
+        width={levelSize}
+        height={levelSize}
+        className={`level-square ${isUnlocked ? '' : 'locked-square'}`}
+      />
+      <text
+        x={level.x}
+        y={level.y + 6}
+        textAnchor="middle"
+        className="level-text"
+        style={{ fill: isUnlocked ? 'black' : 'gray' }}
+      >
+        {isUnlocked ? level.id : '🔒'}
+      </text>
+    </g>
+  );
+})}
+
+
+        {selectedPet && (
+          <image 
+            href={selectedPet.image} 
             x={characterPosition.x}
             y={characterPosition.y}
             width={charSize}
             height={charSize}
             className="character-image" 
           />
+        )}
+
         </svg>
         <Link to={`/battle/${currentLevelId}`}>
             <div className='battle-button'>Battle</div>

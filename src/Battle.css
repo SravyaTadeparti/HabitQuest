@@ -9,19 +9,64 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+    position: relative;
 }
 
 .boss-img{
     position: absolute;
-    bottom:100px;
+    bottom:100px;   
     right:100px;
+    min-width: 300px;
 }
 
 .pet-fight{
     position: absolute;
     bottom:100px;
     left:100px;
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 200px;
+    min-height: 200px;
 }
+
+.projectile {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: orange;
+  animation: fly-direction 1s forwards;
+}
+
+@keyframes fly-direction {
+  to {
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+@keyframes moveProjectile {
+    to {
+        transform: translate(var(--dx), var(--dy));
+    }
+}
+
+.monster-projectile {
+    position: absolute;
+    z-index: 10;
+}
+
+
+.battle-result {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px 40px;
+  border-radius: 16px;
+  z-index: 1000;
+}
+
+
 

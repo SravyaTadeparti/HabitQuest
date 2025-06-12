@@ -19,18 +19,15 @@ function Shop() {
 
 
     const petList = Object.entries(petData).map(([name, data]) => ({
+        ...data,
         name,
-        image: data.image,
-        characteristics: data.characteristics,
-        category: data.category,
-        price: Math.floor(Math.random() * 100 + 50)
     }));
 
     const categoryColors = {
         strength: 'border-red',
         speed: 'border-blue',
         healing: 'border-green',
-        helping: 'border-orange'
+        helping: 'border-orange',
     };
 
 
@@ -130,7 +127,9 @@ const handlePetSelect = async (pet) => {
     const userDocRef = doc(db, "users", user.uid);
     try {
         await updateDoc(userDocRef, {
+
             selectedPet: pet
+
         });
         setSelectedPet(pet); // ✅ Update local state immediately
     } catch (error) {
@@ -215,7 +214,7 @@ const handlePetSelect = async (pet) => {
                     >
                         <img src={pet.image} alt={pet.name} className="pet-img" />
                         <h4>{pet.name}</h4>
-                        <p>{pet.price} Coins</p>
+                        <p>{pet.price}</p>
                         <button onClick={() => buyPet(pet)}>Buy</button>
                     </div>
                     ))}

@@ -9,10 +9,12 @@
         ],
         "image": "/MythicalDragon.png",
         "strength": 10,
-        "speed": 6,
+        "speed": 9,
         "healing": 5,
         "helping": 7,
-        "category": "strength"
+        "category": "strength",
+        "hp":1000,
+        "price": 3500
     },
     "Shadow Phoenix": {
         "characteristics": [
@@ -27,7 +29,9 @@
         "speed": 7,
         "healing": 9,
         "helping": 6,
-        "category": "healing"
+        "category": "healing",
+        "hp":200,
+        "price": 1500
     },
     "Frost Wolf": {
         "characteristics": [
@@ -42,7 +46,9 @@
         "speed": 6,
         "healing": 6,
         "helping": 9,
-        "category": "helping"
+        "category": "helping",
+        "hp":150,
+        "price": 1200
     },
     "Celestial Tiger": {
         "characteristics": [
@@ -57,7 +63,9 @@
         "speed": 9,
         "healing": 4,
         "helping": 5,
-        "category": "speed" 
+        "category": "speed",
+        "hp":500,
+        "price":2200
     },
     "Storm Serpent": {
         "characteristics": [
@@ -72,7 +80,9 @@
         "speed": 9,
         "healing": 3,
         "helping": 5,
-        "category": "strength"  
+        "category": "strength",
+        "hp":450,
+        "price": 2000
     },
     "Lunar Fox": {
         "characteristics": [
@@ -87,7 +97,9 @@
         "speed": 8,
         "healing": 5,
         "helping": 8,
-        "category": "speed"  
+        "category": "speed",
+        "hp":200,
+        "price":1600
     },
     "Flame Griffin": {
         "characteristics": [
@@ -102,7 +114,9 @@
         "speed": 7,
         "healing": 4,
         "helping": 9,
-        "category": "helping"
+        "category": "helping",
+        "hp":300,
+        "price":2000
     },
     "Crystal Turtle": {
         "characteristics": [
@@ -115,9 +129,11 @@
         "image": "/CrystalTurtle.png",
         "strength": 5,
         "speed": 2,
-        "healing": 10,
-        "helping": 10,
-        "category": "healing"  
+        "healing": 6,
+        "helping": 9,
+        "category": "healing",
+        "hp":100,
+        "price": 800
     },
     "Thunder Roc": {
         "characteristics": [
@@ -128,11 +144,13 @@
         "Leads with passion and charisma"
         ],
         "image": "/ThunderRoc.png",
-        "strength": 9,
+        "strength": 7,
         "speed": 8,
         "healing": 3,
         "helping": 6,
-        "category": "strength"
+        "category": "strength",
+        "hp":200,
+        "price":1300
     },
     "Mystic Unicorn": {
         "characteristics": [
@@ -143,11 +161,13 @@
         "Inspires hope and kindness"
         ],
         "image": "/MysticUnicorn.png",
-        "strength": 4,
+        "strength": 2,
         "speed": 6,
         "healing": 10,
         "helping": 10,
-        "category": "healing"
+        "category": "healing",
+        "hp":500,
+        "price":2000
     },
     "Ember Lynx": {
         "characteristics": [
@@ -158,11 +178,13 @@
         "Playful with a fiery spark"
         ],
         "image": "/EmberLynx.png",
-        "strength": 7,
+        "strength": 8,
         "speed": 9,
-        "healing": 4,
+        "healing": 6,
         "helping": 6,
-        "category": "speed"
+        "category": "speed",
+        "hp":450,
+        "price":2500
     },
     "Verdant Beetle": {
         "characteristics": [
@@ -173,11 +195,13 @@
         "Drawn to nature"
         ],
         "image": "/VerdantBeetle.png",
-        "strength": 6,
+        "strength": 5,
         "speed": 3,
-        "healing": 8,
-        "helping": 7,
-        "category": "healing"
+        "healing": 4,
+        "helping": 6,
+        "category": "healing",
+        "hp":100,
+        "price": 900
     },
     "Frost Moth": {
         "characteristics": [
@@ -192,7 +216,9 @@
         "speed": 4,
         "healing": 9,
         "helping": 8,
-        "category": "healing"
+        "category": "healing",
+        "hp":250,
+        "price":2000
     },
     "Solar Cub": {
         "characteristics": [
@@ -204,10 +230,12 @@
         ],
         "image": "/SolarCub.png",
         "strength": 5,
-        "speed": 7,
+        "speed": 9,
         "healing": 7,
         "helping": 9,
-        "category": "helping"
+        "category": "helping",
+        "hp":450,
+        "price":2300
     },
     "Echo Wyrmling": {
         "characteristics": [
@@ -222,7 +250,9 @@
         "speed": 8,
         "healing": 5,
         "helping": 7,
-        "category": "speed"
+        "category": "speed",
+        "hp":250,
+        "price":1500
     }
 }
 
