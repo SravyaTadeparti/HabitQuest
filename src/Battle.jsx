@@ -100,7 +100,7 @@ function Battle() {
                     targetY >= monsterBox.top - rect.top &&
                     targetY <= monsterBox.bottom - rect.top
                 ) {
-                    const damage = selectedPet.strength;
+                    const damage = selectedPet.strength/2;
                     setMonsterHP(prev => Math.max(prev - damage, 0));
                 }
             }, 500);
@@ -125,11 +125,11 @@ const handleKeyDown = (e) => {
         setTimeout(() => {
             setCharY(600);
             setIsJumping(false);
-        }, 400);
+        }, 600);
 
         setTimeout(() => {
             canJumpRef.current = true;
-        }, 500);
+        }, 700);
     }
 };
 
@@ -167,9 +167,9 @@ const handleKeyDown = (e) => {
                     prev.filter(p => {
                         const petBox = {
                             left: charX,
-                            right: charX + 150,
+                            right: charX + 100,
                             top: charY,
-                            bottom: charY + 200,
+                            bottom: charY + 300,
                         };
 
                         const projectileCenterX = p.x + 15; // Half of 30px width
@@ -183,7 +183,7 @@ const handleKeyDown = (e) => {
 
 
                         if (hit) {
-                            setPetHP(prev => Math.max(prev - (Boss.attack || 10), 0));
+                            setPetHP(prev => Math.max(prev - (Boss.attack/2 || 10), 0));
                             return false; 
                         }
 
@@ -199,24 +199,21 @@ const handleKeyDown = (e) => {
 
 
         useEffect(() => {
-    const interval = setInterval(() => {
-        setMonsterProjectiles(prev =>
-            prev
-                .map(p => ({
-                    ...p,
-                    x: p.x + p.dx * 0.02, // control speed
-                    y: p.y + p.dy * 0.02,
-                }))
-                .filter(p => p.x > 0) // remove if off-screen
-        );
-    }, 20); // animation interval
+            const interval = setInterval(() => {
+                setMonsterProjectiles(prev =>
+                    prev
+                        .map(p => ({
+                            ...p,
+                            x: p.x + p.dx * 0.02, 
+                            y: p.y + p.dy * 0.02,
+                        }))
+                        .filter(p => p.x > 0) 
+                );
+            }, 20);
 
-    return () => clearInterval(interval);
-}, []);
-
-
-
-
+            return () => clearInterval(interval);
+        }, []);
+        
 
 useEffect(() => {
     const user = auth.currentUser;
@@ -242,10 +239,10 @@ useEffect(() => {
         setTimeout(() => navigate('/levelpathmap'), 2000);
     };
 
-    if (petHP <= 0 && monsterHP>0) {
+    if (petHP <= 0 && monsterHP>0 && result!="Victory") {
         setResult("Defeat");
         setTimeout(() => navigate('/levelpathmap'), 3000);
-    } else if (monsterHP <= 0) {
+    } else if (monsterHP <= 0 && petHP>0 && result!="Defeat") {
         handleVictory();
     }
 }, [petHP, monsterHP, navigate, levelId]);
@@ -261,7 +258,7 @@ useEffect(() => {
                 const healing = selectedPet.healing || 3;
                 return Math.min(prev + healing, 100);
             });
-        }, 3000); 
+        }, 2000); 
 
         return () => clearInterval(interval);
     }, [selectedPet]);
