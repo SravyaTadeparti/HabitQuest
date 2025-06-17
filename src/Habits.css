@@ -1,125 +1,182 @@
-/* Habits Page */
-
-.habits-page{
-  background-image: url(./assets/background3.jpg);
-  background-size: cover;
+/* ✅ Full page with background image that sticks across scroll */
+.habits-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  z-index: 0;
 }
+
+.habits-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/background3.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+/* ✅ Main container */
 .habits-container {
-    /* text-align: center; */
-    padding: 20px;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width:100%;
-    min-height: 100vh;
-    
-  }
-  
-  /* New Habit Button */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ✅ New Habit Button */
+.new-habit-button {
+  position: absolute;
+  bottom: 50px;
+  right: 400px;
+  width: 50px;
+  height: 50px;
+  font-size: 2vw;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  border: 2px solid white;
+  border-radius: 0%;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.new-habit-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(240, 248, 255, 0.306);
+}
+
+/* ✅ Habit Card */
+.habit-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.habit-paper {
+  width: 35vw;
+}
+
+.habit-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+
+.habit-content p {
+  margin: 20px 0;
+  color: black;
+}
+
+.habit-content input {
+  width: 90%;
+  padding: 10px;
+  margin: 5px;
+}
+
+.editable {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.habit-content button:not(.delete-button) {
+  padding: 5px 10px;
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.habit-content button:not(.delete-button):hover {
+  background-color: #a0522d;
+}
+
+/* ✅ Habit List Scrollable */
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 100vh;
+  scrollbar-width: none;
+}
+
+.habit-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* ✅ Delete Button */
+.delete-button {
+  position: absolute;
+  bottom: -50px;
+  right: -20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.delete-button img {
+  width: 2vw;
+  display: block;
+}
+
+/* ✅ Responsive Tweaks */
+@media (max-width: 1024px) {
   .new-habit-button {
-    position:absolute;
-    bottom:50px;
-    right:400px;
-    width:50px;
-    height:50px;
-    /* padding: 20px 20px; */
-    font-size: 2vw;
-    background-color: rgba(255, 255, 255, 0);
-    color: white;
-    border: solid 2px white;
-    border-radius: 10px;
-    cursor: pointer;
-    border-radius: 0%;
-    transition: ease-in-out 0.2s;
-    /* font-family: "Press Start 2P", cursive; */
+    right: 100px;
   }
-  
-  .new-habit-button:hover{
-    transform: scale(1.1);
-    background-color: rgba(240, 248, 255, 0.306);
-  }
-  
-  /* Habit Card */
-  .habit-card {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
+
   .habit-paper {
-    width: 35vw;
+    width: 50vw;
   }
-  .habit-content p {
-    margin: 20px 0; /* Adds space above and below each text */
-    color:black;
-  }
-  
-  
-  /* Habit Content */
-  .habit-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-  }
-  
-  .habit-content input {
-    width: 90%;
-    padding: 10px;
-    margin: 5px;
+}
+
+@media (max-width: 768px) {
+  .habit-paper {
+    width: 80vw;
   }
 
-  /* Remove black box when typing */
-  .editable {
-    outline: none; /* Removes focus outline */
-    border: none;  /* Ensures no borders */
-    background: none; /* Removes any background highlight */
-  }
-  
-  
-  .habit-content button:not(.delete-button) {
-    padding: 5px 10px;
-    background-color: #8b4513;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .habit-content button:not(.delete-button):hover {
-    background-color: #a0522d;
-  }
-  
-  /* Habit List */
-  .habit-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    overflow-y: auto;
-    max-height: 100vh;
-    scrollbar-width: 10px;
-    scrollbar-width: none;
+  .new-habit-button {
+    right: 40px;
   }
 
-  .delete-button {
-    position: absolute;
-    bottom:-50px;
-    right:-20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    background-color: none;
-    border:none;
-  }
-  
   .delete-button img {
-    width: 2vw;
-    display: block;
+    width: 4vw;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .habit-content input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .new-habit-button {
+    width: 40px;
+    height: 40px;
+    font-size: 4vw;
+  }
+
+  .habit-paper {
+    width: 90vw;
+  }
+
+  .delete-button img {
+    width: 5vw;
+  }
+}
